@@ -1,4 +1,7 @@
- 
+ ##### In express order is important #####
+
+
+
 ##### DIRNAME with require syntax #### 
 
 
@@ -42,7 +45,7 @@ app.listen(port, () => { console.log("Listening on port $(port)");
 
 
  ####### Body-Parser #######
- 
+
  in terminal- npm i body-parser   
 
 const bodyParser= require("body-parser");
@@ -80,3 +83,42 @@ app.get("/", (req,res)=>{
 app.post("/submit",(req,res)=>{
     console.log(req.body);
 })
+
+
+
+####### MORGAN  MIDDLEWARE#####
+
+app.use(morgan("combined"));
+
+1)It is used to log information about incoming requests and outgoing responses, 
+2)tiny- more detailed info, 
+combined - less detailed info
+
+3)u need to install this first- npm i morgan
+
+
+
+
+
+
+
+
+
+##### CUSTOM middlewares ######
+
+1)Custom middlewares are middleware components that are specifically created by developers 
+to customize the functionality of an application.
+2)They are designed to handle specific tasks that may not be covered by built-in middleware.
+
+3)example-
+
+function logger(req, res , next){
+   console.log("request method is :",( req.method));
+   
+    next();
+ app.use(logger);
+
+ 4) explanation -here, req.url will give url of get request
+   req.method will give type of request - get , post etc.
+
+next is important because If you will not write this, next statement would not be executed
