@@ -1,0 +1,82 @@
+ 
+##### DIRNAME with require syntax #### 
+
+
+ app.get("/", (req,res)=>{
+    res.sendFile(__dirname+"/index.html");
+     });
+
+ 1)__dirname is a special variable in Node.js that represents the directory name of the current module file
+ 2)We cannot use only index.HTML here because when we will host our website on cloud the computer would not know which directory to go to
+
+ 
+ 
+ 
+ 
+ 
+ #####  HOW TO USE  __DIRNAME WITH IMPORT SYNTAX   ####
+
+
+ import express from "express";
+
+import (dirname } from "path";
+
+import { fileURLToPath} from "url";
+
+const_dirname = dirname(fileURLToPath (import.meta.url));
+
+(same in both syntax)
+
+
+const app= express(); const port 3000;  
+
+
+app.get("/", (req, res) => res.sendFile(__dirname + "/public/index.html");
+
+app.listen(port, () => { console.log("Listening on port $(port)");
+
+});
+
+
+
+
+
+ ####### Body-Parser #######
+ 
+ in terminal- npm i body-parser   
+
+const bodyParser= require("body-parser");
+ app.use(bodyParser.urlencoded({extended:true}));
+1)body parser Should be called before any of the rout handlers like get ,post ,listen
+2)middleware that extracts the body portion of an incoming HTTP request and makes it available in the req.body property.
+3) urlencoded oded because we will use URL for accessing body
+
+
+###### BodyParser  with import syntax ######
+
+
+
+
+
+
+###### Get and post request #######
+
+1)GET Method:
+
+The GET method is used to retrieve data from a server. When a user makes a GET request, the server responds by sending the requested data back to the client.
+in the below code , the GET route handler for the root URL ("/") is used to handle GET requests. It responds by sending the "index.html" file to the client using the res.sendFile() method.
+
+
+2)POST Method:
+
+The POST method is used to submit data to be processed or stored on the server. When a user makes a POST request, the data is sent in the body of the request.
+
+3)code
+
+app.get("/", (req,res)=>{
+    res.sendFile(__dirname+"/index.html");   
+});
+
+app.post("/submit",(req,res)=>{
+    console.log(req.body);
+})
